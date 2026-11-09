@@ -1,0 +1,35 @@
+name: Topic request
+description: Ask for a concept, chapter section or example that the site does not explain yet.
+labels: ["topic request"]
+body:
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      description: The idea you want explained, in a few words.
+      placeholder: Grouped-query attention
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: What is unclear today
+      description: What you tried to learn, where you looked and what was missing.
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: Where it belongs
+      options:
+        - Concepts (general idea, not tied to kael)
+        - Book (explains part of kael)
+        - Not sure
+    validations:
+      required: true
+  - type: checkboxes
+    id: write
+    attributes:
+      label: Contribution
+      options:
+        - label: I would like to write this page myself.

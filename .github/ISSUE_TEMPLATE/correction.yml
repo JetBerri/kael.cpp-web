@@ -1,0 +1,17 @@
+name: Correction
+description: Report a technical error, an outdated excerpt or an unclear explanation.
+labels: ["correction"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page URL
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What is wrong
+      description: Quote the sentence or excerpt and explain the problem. Link to the code or a source if you can.
+    validations:
+      required: true

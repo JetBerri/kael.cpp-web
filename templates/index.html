@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block body_class %}is-home{% endblock body_class %}
+
+{% block main %}
+<section class="hero">
+  <img class="hero__logo" src="{{ get_url(path='img/logo.png') }}" alt="kael.cpp" width="440" height="227">
+  <p class="hero__tagline">{{ section.extra.tagline }}</p>
+  <p class="hero__actions">
+    <a class="button button--primary" href="{{ get_url(path='@/book/_index.md') }}">Read the book</a>
+    <a class="button" href="{{ config.extra.kael_repo }}">View the code</a>
+    <a class="button button--ghost" href="{{ get_url(path='@/contributing.md') }}">Contribute</a>
+  </p>
+</section>
+
+<div class="home prose">
+  {{ section.content | safe }}
+
+  {% set book = get_section(path="book/_index.md") %}
+  <h2 id="the-book">the book</h2>
+  <p>Fourteen chapters. Each one adds a layer, shows the real code and ends with steps to write that layer yourself.</p>
+  <ol class="chapter-grid">
+    {% for p in book.pages %}
+      <li>
+        <a href="{{ p.permalink }}">
+          <span class="num">{{ p.extra.chapter }}</span>
+          <span class="chapter-grid__title">{{ p.extra.short_title or p.title }}</span>
+          {% if p.extra.builds %}<span class="chapter-grid__desc">{{ p.extra.builds }}</span>{% endif %}
+        </a>
+      </li>
+    {% endfor %}
+  </ol>
+
+  {{ section.extra.after_book | markdown | safe }}
+</div>
+{% endblock main %}

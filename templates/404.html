@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Not found | {{ config.title }}{% endblock title %}
+{% block main %}
+<section class="narrow center">
+  <h1>Not found</h1>
+  <p>This page does not exist yet. If you think it should, <a href="{{ config.extra.site_repo }}/issues/new/choose">request it</a> or <a href="{{ get_url(path='@/contributing.md') }}">write it</a>.</p>
+  <p><a href="{{ get_url(path='@/book/_index.md') }}">Go to the book</a></p>
+</section>
+{% endblock main %}

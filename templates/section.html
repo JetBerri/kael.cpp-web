@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} | {{ config.title }}{% endblock title %}
+{% block description %}{{ section.description or config.description }}{% endblock description %}
+{% block body_class %}is-doc{% endblock body_class %}
+
+{% block main %}
+<div class="doc-layout">
+  <aside class="doc-sidebar" aria-label="Documentation">
+    <details class="doc-sidebar__menu" open>
+    <summary>Contents</summary>
+    {{<sidebar current={section.path} contributing_url={get_url(path="@/contributing.md")} />}}
+    </details>
+  </aside>
+
+  <article class="doc">
+    <header class="doc__header">
+      <h1>{{ section.title }}</h1>
+      {% if section.description %}<p class="lede">{{ section.description }}</p>{% endif %}
+    </header>
+
+    <div class="prose">
+      {{ section.content | safe }}
+    </div>
+
+    {% if section.pages | length > 0 %}
+      <ol class="index-list">
+        {% for p in section.pages %}
+          <li>
+            <a href="{{ p.permalink }}">
+              {% if p.extra.chapter %}<span class="num">{{ p.extra.chapter }}</span>{% endif %}
+              <span class="index-list__title">{{ p.title }}</span>
+              {% if p.description %}<span class="index-list__desc">{{ p.description }}</span>{% endif %}
+            </a>
+          </li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+
+    <footer class="doc__footer">
+      <p class="doc__edit"><a href="{{ config.extra.site_repo }}/edit/{{ config.extra.site_branch }}/content/{{ section.relative_path }}">Edit this page on GitHub</a></p>
+    </footer>
+  </article>
+
+  <aside class="doc-toc">
+    {{<toc items={section.toc} />}}
+  </aside>
+</div>
+{% endblock main %}

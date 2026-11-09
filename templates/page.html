@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} | {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description or config.description }}{% endblock description %}
+{% block head %}{% if page.extra.math %}{% include "partials/katex.html" %}{% endif %}{% endblock head %}
+{% block body_class %}is-doc{% endblock body_class %}
+
+{% block main %}
+<div class="doc-layout">
+  <aside class="doc-sidebar" aria-label="Documentation">
+    <details class="doc-sidebar__menu" open>
+    <summary>Contents</summary>
+    {{<sidebar current={page.path} contributing_url={get_url(path="@/contributing.md")} />}}
+    </details>
+  </aside>
+
+  <article class="doc">
+    <header class="doc__header">
+      {% if page.extra.kicker %}<p class="kicker">{{ page.extra.kicker }}</p>{% endif %}
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
+      <p class="doc__meta">
+        {{ page.reading_time }} min read
+        {% if page.extra.tag %} &middot; code at tag <a href="{{ config.extra.kael_repo }}/tree/{{ page.extra.tag }}"><code>{{ page.extra.tag }}</code></a>{% endif %}
+        {% if page.authors | length > 0 %} &middot; by {{ page.authors | join(sep=", ") }}{% endif %}
+      </p>
+    </header>
+
+    <div class="prose">
+      {{ page.content | safe }}
+    </div>
+
+    <footer class="doc__footer">
+      <p class="doc__edit"><a href="{{ config.extra.site_repo }}/edit/{{ config.extra.site_branch }}/content/{{ page.relative_path }}">Edit this page on GitHub</a></p>
+      <nav class="pager" aria-label="Pagination">
+        {% if page.lower %}
+          <a class="pager__prev" href="{{ page.lower.permalink }}"><span>Previous</span>{{ page.lower.title }}</a>
+        {% else %}<span></span>{% endif %}
+        {% if page.higher %}
+          <a class="pager__next" href="{{ page.higher.permalink }}"><span>Next</span>{{ page.higher.title }}</a>
+        {% endif %}
+      </nav>
+    </footer>
+  </article>
+
+  <aside class="doc-toc">
+    {{<toc items={page.toc} />}}
+  </aside>
+</div>
+{% endblock main %}

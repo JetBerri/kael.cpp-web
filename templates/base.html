@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+  <meta name="description" content="{% block description %}{{ config.description }}{% endblock description %}">
+  <meta property="og:image" content="{{ get_url(path='img/icon-512.png') }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ get_url(path='img/icon-32.png') }}">
+  <link rel="apple-touch-icon" href="{{ get_url(path='img/icon-180.png') }}">
+  <link rel="stylesheet" href="{{ get_url(path='style.css', cachebust=true) }}">
+  <link rel="stylesheet" id="hl-light" href="{{ get_url(path='giallo-light.css') }}" media="(prefers-color-scheme: light)">
+  <link rel="stylesheet" id="hl-dark" href="{{ get_url(path='giallo-dark.css') }}" media="(prefers-color-scheme: dark)">
+  <script src="{{ get_url(path='js/theme.js', cachebust=true) }}"></script>
+  {% block head %}{% endblock head %}
+</head>
+<body class="{% block body_class %}{% endblock body_class %}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/header.html" %}
+  <main id="main">
+    {% block main %}{% endblock main %}
+  </main>
+  {% include "partials/footer.html" %}
+  {% include "partials/search.html" %}
+  <script src="{{ get_url(path='elasticlunr.min.js') }}" defer></script>
+  <script src="{{ get_url(path='js/site.js', cachebust=true) }}" data-search-index="{{ get_url(path='search_index.en.json') }}" defer></script>
+</body>
+</html>

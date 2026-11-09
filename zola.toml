@@ -1,0 +1,46 @@
+base_url = "https://kaelcpp.dev"
+title = "kael.cpp"
+description = "A deep learning framework built from scratch in C++, explained one layer at a time."
+default_language = "en"
+compile_sass = true
+minify_html = false
+build_search_index = true
+generate_feeds = false
+# Content is plain Markdown: C++ brace initializers such as {{1, 2}} would otherwise parse as Tera.
+skip_content_templating = ["**/*.md"]
+
+[search]
+index_format = "elasticlunr_json"
+include_title = true
+include_description = true
+include_content = true
+
+[markdown]
+github_alerts = true
+insert_anchor_links = "heading"
+smart_punctuation = false
+bottom_footnotes = true
+external_links_target_blank = false
+external_links_no_referrer = true
+
+[markdown.highlighting]
+light_theme = "github-light"
+dark_theme = "github-dark"
+style = "class"
+
+[link_checker]
+internal_level = "error"
+
+[extra]
+kael_repo = "https://github.com/JetBerri/kael.cpp"
+kael_branch = "main"
+site_repo = "https://github.com/JetBerri/kael.cpp-web"
+site_branch = "main"
+license = "Apache-2.0"
+
+nav = [
+  { name = "book", path = "@/book/_index.md" },
+  { name = "concepts", path = "@/concepts/_index.md" },
+  { name = "design", path = "@/adr/_index.md" },
+  { name = "contribute", path = "@/contributing.md" },
+]

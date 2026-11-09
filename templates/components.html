@@ -1,0 +1,33 @@
+{% component sidebar(current: string, contributing_url: string) %}
+  {% for path in ["book/_index.md", "concepts/_index.md", "adr/_index.md"] %}
+    {% set section = get_section(path=path) %}
+    <details class="sidebar-group"{% if section.path in current or path == "book/_index.md" %} open{% endif %}>
+      <summary><a href="{{ section.permalink }}"{% if current == section.path %} aria-current="page"{% endif %}>{{ section.title }}</a></summary>
+      <ol>
+        {% for p in section.pages %}
+          <li><a href="{{ p.permalink }}"{% if current == p.path %} aria-current="page"{% endif %}>
+            {% if p.extra.chapter %}<span class="num">{{ p.extra.chapter }}</span>{% endif %}{{ p.extra.short_title or p.title }}
+          </a></li>
+        {% endfor %}
+      </ol>
+    </details>
+  {% endfor %}
+  <p class="sidebar-extra"><a href="{{ contributing_url }}"{% if current == "/contributing/" %} aria-current="page"{% endif %}>Contribute a page</a></p>
+{% endcomponent sidebar %}
+
+{% component toc(items: array) %}
+  {% if items | length > 0 %}
+    <nav class="toc" aria-label="On this page">
+      <p class="toc__title">On this page</p>
+      <ol>
+        {% for h in items %}
+          <li><a href="#{{ h.id }}">{{ h.title }}</a>
+            {% if h.children | length > 0 %}
+              <ol>{% for c in h.children %}<li><a href="#{{ c.id }}">{{ c.title }}</a></li>{% endfor %}</ol>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    </nav>
+  {% endif %}
+{% endcomponent toc %}

@@ -7,7 +7,7 @@ tagline = "a deep learning framework built from scratch in C++, explained one la
 after_book = """
 ## a growing knowledge base
 
-The book explains how kael works. The [concepts](@/concepts/_index.md) section explains the ideas around it: the math behind gradients, how memory hierarchies shape kernels, why attention works. It is written by the community and it is meant to keep growing.
+The book explains how kael works. The [concepts](@/concepts/_index.md) section explains the ideas around it: the math behind gradients, how memory hierarchies shape kernels, why attention works. It is open to contributions and meant to grow with the community.
 
 Every page on this site is a Markdown file in a public repository. Fix a sentence, add an exercise, or write the article you wish you had read when you started. Read [how to contribute](@/contributing.md), or [request a topic](https://github.com/JetBerri/kael.cpp-web/issues/new/choose) you want explained.
 """
@@ -17,7 +17,7 @@ Every page on this site is a Markdown file in a public repository. Fix a sentenc
 
 kael is a deep learning framework written from zero in modern C++. It has tensors with shapes and strides, views that share memory, a loop engine with broadcasting and type promotion, reverse-mode autograd, neural network modules and optimizers, a multithreaded CPU backend, a CUDA backend, Python bindings, and a GPT-2 that loads real weights and generates text.
 
-None of it is a wrapper. Every layer is written by hand, tested against PyTorch, and explained in a book that rebuilds it step by step.
+Every layer is implemented from scratch, with no wrappers around another framework. Each one is tested against PyTorch and explained in a book that rebuilds it step by step.
 
 ```cpp
 #include <iostream>

@@ -7,7 +7,7 @@ weight = 2
 
 The book follows kael one layer at a time. This section steps back and explains the ideas those layers rely on. Articles here are not tied to the order of the book, and many of them apply to any framework.
 
-This section is written by the community. If a topic is missing, [request it](https://github.com/JetBerri/kael.cpp-web/issues/new/choose) or [write it](@/contributing.md).
+This section is open to contributions. If a topic is missing, [request it](https://github.com/JetBerri/kael.cpp-web/issues/new/choose) or [write it](@/contributing.md).
 
 ## Wanted articles
 

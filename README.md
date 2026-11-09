@@ -1,6 +1,6 @@
 # kael.cpp-web
 
-Source of the [kael.cpp website](https://kaelcpp.dev/): the book that rebuilds the [kael](https://github.com/JetBerri/kael.cpp) deep learning framework one layer at a time, design decision records, and a community-written knowledge base on how deep learning systems work.
+Source of the [kael.cpp website](https://kaelcpp.dev/): the book that rebuilds the [kael](https://github.com/JetBerri/kael.cpp) deep learning framework one layer at a time, design decision records, and a knowledge base, open to contributions, on how deep learning systems work.
 
 ## Build
 
